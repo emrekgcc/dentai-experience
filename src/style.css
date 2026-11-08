@@ -2833,3 +2833,55 @@ footer.section-shell {
 .journey:not(.in-view) .scan-light {
   animation-play-state: paused;
 }
+.submission-context {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 4vw;
+  background: #0c161c;
+  color: #dfe7df;
+}
+.submission-context img {
+  display: block;
+  object-fit: contain;
+  width: 84px;
+  height: 55px;
+}
+.submission-context p {
+  font-size: 11px;
+  line-height: 1.6;
+}
+.submission-context strong {
+  font-weight: 500;
+  display: block;
+}
+.submission-context p span {
+  display: block;
+  color: #a6bcae;
+  font-size: 10px;
+}
+.submission-jump {
+  margin-left: auto;
+  font-size: 10px;
+  border-bottom: 1px solid #8da987;
+  padding-bottom: 4px;
+}
+@media (max-width: 700px) {
+  .submission-context {
+    gap: 12px;
+    padding: 10px 5%;
+  }
+  .submission-context img {
+    width: 64px;
+    height: 42px;
+  }
+  .submission-context p {
+    font-size: 10px;
+  }
+  .submission-context p span {
+    font-size: 9px;
+  }
+  .submission-jump {
+    display: none;
+  }
+}
