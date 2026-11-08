@@ -18,5 +18,12 @@
     "review": "İkinci çıktı ilkine görsel olarak çok benzer kaldı. Tek kontur ve sınır takibi talebi tam gerçekleşmiş kabul edilmedi."
   },
   "review": "İlk çıktı ışık geçişini ve sakin kamerayı üretti. Amber kontur yer yer çift çizgiye dönüştü; beyaz alanın sınırını tam izlemiyor.",
-  "selectedFile": "gemini-surface-study-original.mp4"
+  "selectedFile": "gemini-surface-study-original.mp4",
+  "playbackDelivery": {
+    "files": [
+      "gemini-study-playback.mp4",
+      "gemini-study-take2-playback.mp4"
+    ],
+    "method": "FFmpeg stream-copy ve MP4 faststart. Görüntü/ses yeniden kodlanmadı; özgün indirme dosyaları korundu."
+  }
 }
