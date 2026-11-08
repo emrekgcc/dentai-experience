@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#111c20" />
+    <title>DentAI — Bir görüntünün yolculuğu</title>
+    <meta
+      name="description"
+      content="Emre Küçükgöçer'in DentAI projesini fotoğraf çekiminden örnek ön rapora kadar etkileşimli olarak keşfedin. Gemini Prompt Arena için hazırlanan çalışma."
+    />
+    <link rel="icon" href="assets/logo.webp" />
+    <link rel="stylesheet" href="src/fonts.css" />
+    <link rel="stylesheet" href="src/style.css" />
+    <link
+      rel="preload"
+      href="assets/font-2.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+  </head>
+  <body>
+    <a class="skip" href="#journey">Deneyime geç</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="DentAI başlangıç"
+        ><img src="assets/logo.webp" width="26" height="32" alt="" /><span
+          >DentAI</span
+        ></a
+      >
+      <nav aria-label="Ana menü">
+        <a href="#journey">Deneyim</a><a href="#lab">Perde arkası</a
+        ><a href="#creator">Geliştirici</a>
+      </nav>
+      <button
+        class="motion-control"
+        aria-pressed="false"
+        title="Hareketi azalt"
+      >
+        Hareketi azalt <span aria-hidden="true">◌</span>
+      </button>
+    </header>
+    <main>
+      <section class="opening" id="top">
+        <div class="opening-top">
+          <span>Emre Küçükgöçer / Bireysel proje</span
+          ><span>Gemini Prompt Arena · Çalışma sunumu</span>
+        </div>
+        <div class="opening-title">
+          <h1>DENT<span>AI</span></h1>
+          <div class="lens" aria-hidden="true">
+            <img
+              src="assets/model.webp"
+              width="1280"
+              height="720"
+              alt=""
+            /><span class="lens-ring"></span
+            ><span class="lens-mark">DA / 01</span>
+          </div>
+        </div>
+        <div class="opening-bottom">
+          <div>
+            <p class="eyebrow">Ağız sağlığına daha yakından bak.</p>
+            <h2>Küçük bir ayrıntı.<br />Üzerinde düşünmeye değer.</h2>
+          </div>
+          <div class="opening-intro">
+            <p>
+              Bir fotoğraftaki işaret, anlaşılır bir açıklamaya nasıl dönüşür?
+              DentAI’ı geliştirirken sorduğum soruları ve bulduğum çözümleri tek
+              bir örnekte bir araya getirdim.
+            </p>
+            <a class="button dark" href="#journey"
+              >Yolculuğu başlat <span>↘</span></a
+            >
+          </div>
+        </div>
+        <div class="achievement">
+          <span class="star" aria-hidden="true">✳</span>
+          <p>
+            <b>Türk-Alman Üniversitesi Hackathon 2026</b
+            ><span>Jüri tam puanıyla birincilik · Tek başıma geliştirdim.</span>
+          </p>
+          <a href="#creator">Projenin hikâyesi ↗</a>
+        </div>
+      </section>
+
+      <section class="journey" id="journey" aria-label="DentAI çalışma akışı">
+        <div class="journey-stage">
+          <div class="stage-top">
+            <span class="eyebrow">Bir görüntünün yolculuğu</span
+            ><span class="demo-label"><i></i> Etkileşimli canlandırma</span>
+          </div>
+          <div class="stage-body">
+            <div class="story-copy">
+              <p class="scene-kicker" id="scene-kicker">01 / Çekim</p>
+              <h2 id="scene-title">
+                Her şey<br />bir kareyle<br /><em>başlıyor.</em>
+              </h2>
+              <p id="scene-description">
+                Telefonun kamerasını hazırladığını düşün. Yönlendirmeli çekim,
+                ağız içindeki aynı bölgeyi doğru açı ve yeterli ışıkla
+                görüntülemene yardımcı olur.
+              </p>
+              <p class="scene-note" id="scene-note">
+                Bu deneyimde sentetik bir örnek kullanılıyor.
+              </p>
+              <div class="scene-interaction" id="scene-controls"></div>
+            </div>
+            <div class="visual-stage" data-scene="0">
+              <div class="orbit" aria-hidden="true"></div>
+              <img
+                class="model-fallback"
+                src="assets/surface.webp"
+                alt="Temsili mine yüzeyi"
+                width="1440"
+                height="520"
+              />
+              <canvas
+                id="enamel"
+                aria-label="Temsili diş modeli. Kaydırdıkça görüntüye yaklaşılır ve küçük bir alanın maskesi çizilir."
+              ></canvas>
+              <div class="capture-guides" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><span>Üst ön bölge</span>
+                <div class="reticle">+</div>
+              </div>
+              <div class="visual-label">
+                <span id="visual-name">KAMERA GÖRÜNÜMÜ</span
+                ><span>ÖRNEK / 01</span>
+              </div>
+              <div class="scan-light" aria-hidden="true"></div>
+              <div class="surface-callout" aria-hidden="true">
+                <span>İşaretlenen alan</span><i></i>
+              </div>
+              <div class="data-packet" aria-hidden="true">
+                <span>Görüntü</span><i>+</i><span>Bölge bilgisi</span><i>→</i
+                ><strong>Gemini</strong>
+              </div>
+              <div class="report-sheet" aria-hidden="true">
+                <div class="report-top">
+                  <b>DentAI</b><span>Örnek ön rapor</span>
+                </div>
+                <div class="report-mark">01</div>
+                <h3>Bir gözlem.<br />Bir açıklama.</h3>
+                <span class="report-category">Görüntüdeki gözlem</span>
+                <p>
+                  İşaretlenen alan çevresindeki mineye göre daha açık görünüyor.
+                </p>
+                <span class="report-category">Açıklama</span>
+                <p>Bu farkın nedenini yalnızca fotoğraftan belirleyemem.</p>
+                <span class="report-category">Sonraki adım</span>
+                <p>Gerektiğinde diş hekimiyle değerlendirme.</p>
+                <div class="report-foot">
+                  Temsili çıktı · Hekim değerlendirmesi gerekir.
+                </div>
+              </div>
+              <div class="handoff" aria-hidden="true">
+                <div class="handoff-dot">+</div>
+                <span>Hekim değerlendirmesi</span>
+                <p>Görüntü + gözlem + bağlam</p>
+                <div class="handoff-line"></div>
+                <small>Paylaşım, kullanıcının onayıyla</small>
+              </div>
+            </div>
+          </div>
+          <div class="stage-bottom">
+            <div
+              class="chapter-buttons"
+              role="group"
+              aria-label="Akış adımları"
+            >
+              <button data-chapter="0" aria-pressed="true">
+                <small>01</small> Çekim</button
+              ><button data-chapter="1" aria-pressed="false">
+                <small>02</small> Hazırlık</button
+              ><button data-chapter="2" aria-pressed="false">
+                <small>03</small> Maske</button
+              ><button data-chapter="3" aria-pressed="false">
+                <small>04</small> Gemini</button
+              ><button data-chapter="4" aria-pressed="false">
+                <small>05</small> Rapor</button
+              ><button data-chapter="5" aria-pressed="false">
+                <small>06</small> Devamı
+              </button>
+            </div>
+            <div class="progress-track"><span></span></div>
+            <span class="scroll-hint"
+              >Kaydırarak ilerle <span aria-hidden="true">↓</span></span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="bridge section-shell">
+        <span class="eyebrow">Bu ayrıntı neden önemli?</span>
+        <div class="bridge-grid">
+          <h2>Bir işaret çizmek<br /><em>işin başlangıcı.</em></h2>
+          <div>
+            <p class="large-copy">
+              Benim için asıl mesele, o işareti gören kişinin ne anlayacağıydı.
+            </p>
+            <p>
+              Diş hekimi korkusu, zaman ayıramamak ya da masraf kaygısı
+              kontrolleri erteletebiliyor. DentAI fikri, ağız sağlığına evde
+              daha dikkatli bakmayı ve gerektiğinde bir hekime ulaşmayı
+              kolaylaştırma isteğinden doğdu.
+            </p>
+            <p>
+              Fotoğrafın kalitesi, yanlış alarmlar ve açıklamanın dili bu yüzden
+              birlikte ele alındı. Aşağıda bu kararları kendin inceleyebilirsin.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="lab" class="lab section-shell">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Geliştirme masası</span>
+            <h2>Peki, perde arkasında<br /><em>ne oluyor?</em></h2>
+          </div>
+          <p>Bir ayrıntıyı değiştir.<br />O kararın akıştaki yerini gör.</p>
+        </div>
+        <div class="lab-grid">
+          <div class="lab-sample">
+            <div class="sample-title">
+              <span>GÖRÜNTÜ HAZIRLAMA</span><span>Temsili karşılaştırma</span>
+            </div>
+            <div class="comparison">
+              <img
+                src="assets/surface.webp"
+                alt="Kontrast karşılaştırması için sentetik mine yüzeyi"
+                width="1440"
+                height="520"
+              />
+              <div class="contrast-layer">
+                <img
+                  src="assets/surface.webp"
+                  alt=""
+                  width="1440"
+                  height="520"
+                />
+              </div>
+              <div class="compare-line" aria-hidden="true"><span>↔</span></div>
+              <span class="before">Girdi</span
+              ><span class="after">Kontrast</span>
+            </div>
+            <label class="range-label" for="compare"
+              >Görüntünün iki görünümünü karşılaştır</label
+            ><input id="compare" type="range" min="0" max="100" value="50" />
+            <p>
+              CLAHE ile yerel kontrastı düzenledim. Buradaki sürgü bu adımın
+              görsel mantığını anlatıyor. Gerçek işlem, OpenCV görüntü hazırlama
+              hattında yapılıyor.
+            </p>
+          </div>
+          <div class="negative-study">
+            <span class="eyebrow">Yanlış alarmı düşünmek</span>
+            <h3>Parlayan her şey<br />bir bulgu mu?</h3>
+            <div
+              class="sample-options"
+              role="group"
+              aria-label="Karıştırılabilecek örnekler"
+            >
+              <button aria-pressed="true" data-example="0">
+                Tükürük parlaması</button
+              ><button aria-pressed="false" data-example="1">Diş teli</button
+              ><button aria-pressed="false" data-example="2">
+                Plak &amp; tartar
+              </button>
+            </div>
+            <div class="negative-output">
+              <span class="sample-symbol" aria-hidden="true">✧</span>
+              <div>
+                <h4 id="negative-title">Işık da beyaz görünür.</h4>
+                <p id="negative-text">
+                  Tükürük yüzeyindeki parlama, açık renkli bir mine bölgesine
+                  benzeyebilir. Bu tür örnekleri eğitimde negatif örnek olarak
+                  kullanmak, modelin ayrımı öğrenmesine yardımcı olur.
+                </p>
+              </div>
+            </div>
+            <p class="fine">
+              Hard negative mining · Yanlış pozitifleri azaltmaya yönelik eğitim
+              yaklaşımı
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="prompt" class="prompt-section section-shell">
+        <div class="prompt-heading">
+          <span class="eyebrow">Gemini ile çalışmak</span>
+          <h2>İyi bir açıklama,<br />iyi bir <em>sınırla</em> başlar.</h2>
+          <p>
+            Görüntüyü anlamlandıran modelin nasıl konuşacağını da tasarladım.
+            Aşağıdaki örnek, bu yaklaşımı görünür kılmak için yeniden yazıldı.
+          </p>
+        </div>
+        <div class="prompt-workbench">
+          <div class="prompt-editor">
+            <div class="window-bar">
+              <span>İSTEMİN YAPISI</span><span>Gemini 2.0 Flash</span>
+            </div>
+            <div class="prompt-tabs" role="group" aria-label="İstem bölümleri">
+              <button data-prompt="0" aria-pressed="true">Görev</button
+              ><button data-prompt="1" aria-pressed="false">Dayanak</button
+              ><button data-prompt="2" aria-pressed="false">Sınırlar</button
+              ><button data-prompt="3" aria-pressed="false">Dil</button>
+            </div>
+            <p class="prompt-code" id="prompt-code">
+              Bir ağız içi görüntüsünde işaretlenen alanı, kişinin
+              anlayabileceği kısa bir ön değerlendirmeyle açıkla.
+            </p>
+            <div class="prompt-bottom">
+              Görüntü + maske bilgisi + sınırlanmış yönerge
+            </div>
+          </div>
+          <div class="prompt-result" aria-live="polite">
+            <span class="eyebrow">Bu karar neyi değiştiriyor?</span>
+            <h3 id="prompt-title">Önce görevi tanımlıyorum.</h3>
+            <p id="prompt-reason">
+              Modelden işaretlenen bölgeye odaklanmasını istiyorum. Böylece
+              açıklamanın hangi soruya yanıt vermesi gerektiği belirginleşiyor.
+            </p>
+            <div class="result-example">
+              <span>Örnek çıktı</span>
+              <p>
+                “İşaretlenen alan çevresindeki mineye göre daha açık görünüyor.
+                Bunun nedenini yalnızca bu fotoğraftan belirleyemem.”
+              </p>
+            </div>
+            <small
+              >Bu ekranda canlı API çağrısı yapılmaz. İstemler model hatalarını
+              tek başına ortadan kaldırmaz.</small
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="architecture section-shell" id="architecture">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Uçtan uca mimari</span>
+            <h2>Her parçanın<br /><em>bir görevi var.</em></h2>
+          </div>
+          <p>
+            Birbirine bağladığım bileşenler<br />ve ürün için düşündüğüm devamı.
+          </p>
+        </div>
+        <div class="architecture-line">
+          <div>
+            <span>GÖRÜNTÜ</span><b>OpenCV</b>
+            <p>Hazırlama ve kontrast</p>
+          </div>
+          <i aria-hidden="true">→</i>
+          <div>
+            <span>TESPİT</span><b>YOLOv8</b>
+            <p>Bölge ve piksel maskesi</p>
+          </div>
+          <i aria-hidden="true">→</i>
+          <div>
+            <span>AÇIKLAMA</span><b>Gemini</b>
+            <p>Görüntü ve bağlam</p>
+          </div>
+          <i aria-hidden="true">→</i>
+          <div>
+            <span>ARAYÜZ</span><b>Streamlit</b>
+            <p>Birlikte çalışan demo</p>
+          </div>
+        </div>
+        <div class="architecture-details">
+          <details open>
+            <summary>
+              <span>Hackathon prototipi</span
+              ><small>Geliştirilen çalışma</small>
+            </summary>
+            <div>
+              <p>
+                Python görüntü işleme hattını, segmentasyon modelini ve Gemini
+                açıklama katmanını Streamlit demosunda birleştirdim. Arayüzü CSS
+                ile düzenledim ve sunum sırasında Colab ortamındaki demoya
+                erişim için Localtunnel kullandım.
+              </p>
+              <ul class="tech-list">
+                <li>Python</li>
+                <li>OpenCV</li>
+                <li>NumPy</li>
+                <li>CLAHE</li>
+                <li>PyTorch</li>
+                <li>Ultralytics</li>
+                <li>YOLOv8-Nano</li>
+                <li>Instance Segmentation</li>
+                <li>Hard Negative Mining</li>
+                <li>Binary Cross-Entropy</li>
+                <li>Gemini 2.0 Flash</li>
+                <li>google-generativeai</li>
+                <li>Multimodal AI</li>
+                <li>Prompt Engineering</li>
+                <li>Streamlit</li>
+                <li>HTML / CSS</li>
+                <li>Colab</li>
+                <li>Localtunnel</li>
+                <li>Node.js / npx</li>
+              </ul>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span>Mobil ve cihaz üzerinde işleme</span
+              ><small>Ürün geliştirme yönü</small>
+            </summary>
+            <div>
+              <p>
+                Tespit modelini mobil cihazda çalıştırmak için TensorFlow Lite
+                ve FP16/INT8 nicemleme yaklaşımını ele aldım. Flutter ve Dart
+                ile yönlendirmeli çekim ve reaktif arayüz, Firebase ve Firestore
+                ile izinli hasta–hekim paylaşımı ürün planında yer alıyor. Çekim
+                tutarlılığı için isteğe bağlı 3B makro lens aparatı da
+                değerlendirildi.
+              </p>
+              <p>
+                Cihazdaki tespit ve uzaktaki Gemini açıklaması farklı veri
+                akışlarıdır. Bulut açıklaması kullanıldığında hangi verinin
+                iletildiği kullanıcıya açıklanmalı ve uygun izin alınmalıdır.
+              </p>
+              <ul class="tech-list">
+                <li>TensorFlow Lite</li>
+                <li>FP16 / INT8</li>
+                <li>Quantization</li>
+                <li>Edge AI</li>
+                <li>NPU / GPU</li>
+                <li>Flutter</li>
+                <li>Dart</li>
+                <li>State-driven UI</li>
+                <li>Firebase</li>
+                <li>Firestore</li>
+                <li>NoSQL</li>
+                <li>3B makro lens</li>
+              </ul>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span>Kullanıcıdan kliniğe</span
+              ><small>Planlanan B2B2C model</small>
+            </summary>
+            <div>
+              <p>
+                Temel taramanın ücretsiz sunulmasını, ileri analiz için
+                aboneliği ve kişinin isteğiyle uygun bir diş kliniğine
+                yönlendirilmesini planladım. Klinik tarafında, kullanıcının
+                paylaştığı ön raporu okuyabilecek bir panel düşünülüyor. Premium
+                abonelik, yönlendirme komisyonu ve klinik SaaS üyeliği planlanan
+                gelir kalemleri.
+              </p>
+              <p>
+                Klinik doğrulama, cihazlar arasında performans ölçümü ve farklı
+                çekim koşullarında güvenilirlik, ürünleşme sürecindeki
+                değerlendirme başlıklarıdır. Tanı ve tedavi kararını hekim
+                verir.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="creator section-shell" id="creator">
+        <div class="creator-heading">
+          <span class="eyebrow">Fikirden çalışan demoya</span>
+          <h2>Bunu ben<br /><em>geliştirdim.</em></h2>
+          <p class="creator-name">Emre Küçükgöçer</p>
+          <p>
+            Sivas Cumhuriyet Üniversitesi<br />Bilgisayar Mühendisliği öğrencisi
+          </p>
+        </div>
+        <div class="creator-story">
+          <span class="award">01<span>Jüri tam puanıyla birincilik</span></span>
+          <h3>Türk-Alman Üniversitesi<br />Hackathon 2026</h3>
+          <p>
+            DentAI’ı bireysel olarak geliştirdim. Görüntü hazırlama, modelin
+            bölgeyi işaretlemesi, Gemini’nin açıklaması ve demo arayüzü üzerinde
+            çalıştım. En çok üzerinde durduğum konu, bu parçaların kullanıcı
+            için anlaşılır bir sırayla birlikte çalışmasıydı.
+          </p>
+          <p>
+            Bu deneyimi Gemini Prompt Arena için hazırlarken, sonuca giderken
+            aldığım kararları da görünür kılmak istedim. Buradaki her adım,
+            projedeki bir soruya karşılık geliyor.
+          </p>
+          <div class="creator-links">
+            <a
+              class="button"
+              href="assets/DentAI.pdf"
+              target="_blank"
+              rel="noopener"
+              >Proje sunumu <span>↗</span></a
+            ><a
+              href="https://emrekgcc.github.io/emre-portfolio/"
+              target="_blank"
+              rel="noopener"
+              >Diğer çalışmalarım ↗</a
+            >
+          </div>
+        </div>
+      </section>
+      <footer class="section-shell">
+        <div class="footer-brand">
+          DentAI<span>Bir görüntünün yolculuğu.</span>
+        </div>
+        <p>
+          Bu web deneyiminin kod ve görsel anlatımının hazırlanmasında ChatGPT
+          desteği kullanıldı. Diş modeli, görüntüler ve rapor çıktısı
+          temsilidir. Çalışma, Emre Küçükgöçer’in DentAI geliştirme deneyimini
+          anlatır.
+        </p>
+        <a href="#top">Başa dön ↑</a>
+      </footer>
+    </main>
+    <noscript
+      ><p class="noscript">
+        Etkileşimli akış için JavaScript’i açın. Projenin tamamını
+        <a href="assets/DentAI.pdf">PDF sunumdan</a> okuyabilirsiniz.
+      </p></noscript
+    >
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
