@@ -66,12 +66,8 @@ Tam ekranı uzun süre sabitleyen kaydırma kaldırıldı. Analiz panelindeki al
 
 1440×960, 768×1024, 390×844 ve 320×568 ekranlarda yeni etkileşimler, indirme, adım seçiminin korunması, yatay taşma ve azaltılmış hareket kontrol edildi.
 
-## Gemini ile üretilen özgün video ve bağımsız denemeler
-
-Gemini video aracından iki özgün video alındı. Her iki dosya yaklaşık 10 saniye, 1280×720 ve 24 FPS'tir. Özgün dosyalar ve platform kaynak işaretleri korundu. Kodla hazırlanan 1080p/60 FPS segmentasyon filminden ayrı etiketlenirler.
-
-İlk videoda çift kontur ve sınır kayması gözlendi. İkinci istem bu konuyu hedefledi, ancak yeni çıktı ilkine çok benzer kaldı. İkinci deneme başarılı bir düzeltme olarak sunulmaz. Promptlar ve değerlendirme assets/gemini-video-record.json içindedir.
+## Bağımsız metin denemeleri
 
 Ayrı üç yeni Gemini sohbetinde aynı temsili metin girdisiyle gerçek yanıtlar kaydedildi. İlk iki yanıtta kişisel hitap kaldı. Son istemde hitap eklenmemesi açıkça istendi; kaydedilmiş son yanıtta hitap kaldırıldı. Ham yanıtlar değiştirilmeden assets/gemini-independent-records.json içinde saklanır. Bu tekil metin denemeleri klinik veya istatistiksel doğrulama değildir.
 
-Son yerel incelemede masaüstü 1440, tablet 768 ve telefon 390 piksel genişlikte taşma görülmedi. Video öğeleri 1280×720 ve 1920×1080 boyutlarını doğru bildirdi. Üç bağımsız deneme sekmesi, iki video seçimi, meydan okuma ve rapor penceresi kontrol edildi.
+Gemini ile üretilen kısa filmler kullanıcının isteğiyle siteden kaldırıldı. Başvuru akışında video dosyası Google Flow'da hazırlanacak, çalışmanın bağlantısı alanında bu site paylaşılacaktır.

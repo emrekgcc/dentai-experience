@@ -2885,67 +2885,6 @@ footer.section-shell {
     display: none;
   }
 }
-.creative-study {
-  background: #132b28;
-  color: #eff2e6;
-  padding-top: 65px;
-}
-.creative-study .section-heading > p {
-  color: #b7cbb9;
-}
-.creative-study .eyebrow {
-  color: #c8e3ae;
-}
-.creative-player video {
-  width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 16/9;
-  background: #10251f;
-  border-radius: 5px;
-}
-.creative-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 15px 0;
-  border-bottom: 1px solid #56775b66;
-  font-size: 10px;
-  color: #bdd1b8;
-  line-height: 1.6;
-}
-.creative-notes {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 8%;
-  padding-top: 30px;
-}
-.creative-notes h3 {
-  font-size: 25px;
-  margin-bottom: 15px;
-  line-height: 1.1;
-}
-.creative-notes p,
-.creative-source p {
-  font-size: 13px;
-  line-height: 1.7;
-  color: #c8d9c0;
-}
-.creative-source {
-  margin-top: 25px;
-  border-top: 1px solid #56775b66;
-}
-.creative-source summary {
-  font-size: 12px;
-  padding-block: 18px;
-}
-.creative-source a {
-  display: inline-block;
-  font-size: 11px;
-  border-bottom: 1px solid #b7ccaa;
-  padding-bottom: 5px;
-  margin: 12px 0;
-}
 .revision-study {
   background: #1a312d;
   color: #eff1e7;
@@ -3042,20 +2981,9 @@ footer.section-shell {
   }
 }
 @media (max-width: 700px) {
-  .creative-study {
-    padding-top: 50px;
-  }
-  .creative-meta {
-    flex-direction: column;
-    gap: 8px;
-  }
-  .creative-notes,
   .revision-layout {
     grid-template-columns: minmax(0, 1fr);
     gap: 25px;
-  }
-  .creative-notes h3 {
-    font-size: 24px;
   }
   .revision-tabs {
     gap: 12px;
@@ -3091,23 +3019,6 @@ footer.section-shell {
   border-bottom: 1px solid #78916c;
   padding-bottom: 3px;
 }
-.creative-takes {
-  display: flex;
-  gap: 22px;
-  padding-top: 17px;
-}
-.creative-takes button {
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid transparent;
-  color: #b5cda9;
-  padding: 7px 0;
-  font-size: 11px;
-}
-.creative-takes [aria-pressed="true"] {
-  border-color: #c6e2a6;
-  color: #eef3e7;
-}
 .provenance a {
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -3120,8 +3031,5 @@ footer.section-shell {
   }
   .review-route > span {
     width: 100%;
-  }
-  .creative-takes button {
-    font-size: 10px;
   }
 }

@@ -83,34 +83,3 @@ export function initProductionNotes() {
     if (document.hidden) videos.forEach((video) => video.pause());
   });
 }
-
-const creativeTakes = [
-  {
-    file: "assets/gemini-surface-study-original.mp4",
-    playback: "assets/gemini-study-playback.mp4",
-    review:
-      "İlk çıktı sakin kamera hareketini ve ışık geçişini üretti. Kontur ise yer yer çift çizgiye dönüştü ve beyaz alanın sınırını tam izleyemedi. Sonraki istemde bu sorunu özellikle ele aldım.",
-  },
-  {
-    file: "assets/gemini-surface-study-take2.mp4",
-    playback: "assets/gemini-study-take2-playback.mp4",
-    review:
-      "İkinci istemde kamera hareketini azalttım ve tek, yüzeye bağlı konturu daha açık tarif ettim. Çıktı ilkine çok benzer kaldı; konturun alanı tam izlediğini söyleyemem. Bu sınırlılığı üretim kaydında korudum.",
-  },
-];
-const takeButtons = [...document.querySelectorAll("[data-take]")];
-takeButtons.forEach((button, index) =>
-  button.addEventListener("click", () => {
-    const video = document.querySelector("#creative-film");
-    video.pause();
-    video.src = creativeTakes[index].playback;
-    video.load();
-    document.querySelector("#creative-download").href =
-      creativeTakes[index].file;
-    document.querySelector("#creative-review").textContent =
-      creativeTakes[index].review;
-    takeButtons.forEach((item, i) =>
-      item.setAttribute("aria-pressed", String(i === index)),
-    );
-  }),
-);
