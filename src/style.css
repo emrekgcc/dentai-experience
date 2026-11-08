@@ -1876,3 +1876,15 @@ footer > a {
     margin: 6px 0;
   }
 }
+.surface-callout span {
+  background: #14272bef;
+  border: 1px solid #8dba7f66;
+  border-radius: 20px;
+  padding: 7px 10px;
+}
+.visual-label span {
+  background: #102126e8;
+  padding: 5px 7px;
+  border-radius: 3px;
+  color: #c9dacd;
+}
