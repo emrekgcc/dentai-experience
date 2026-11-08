@@ -64,6 +64,9 @@ const scenes = [
 ];
 
 const journey = document.querySelector(".journey");
+document
+  .querySelector(".stage-top")
+  .after(document.querySelector(".stage-bottom"));
 const stage = document.querySelector(".visual-stage");
 const canvas = document.querySelector("#enamel");
 const chapterButtons = [...document.querySelectorAll("[data-chapter]")];
@@ -92,7 +95,6 @@ let mask = true;
 let maskAmount = 1;
 let contrast = true;
 let storyTop = 0;
-let storyTravel = 1;
 let sectionVisible = false;
 const timing = [];
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
@@ -115,8 +117,9 @@ window.dentaiDiagnostics = {
 };
 
 function moveToChapter(index) {
-  const top = storyTop + (storyTravel * index) / 5;
-  window.scrollTo({ top, behavior: reduced ? "instant" : "smooth" });
+  target = clamp(index, 0, scenes.length - 1);
+  changeChapter(target);
+  schedule();
 }
 
 function changeChapter(index) {
@@ -245,7 +248,7 @@ function animate(now) {
     ? target
     : progress + distance * (1 - Math.exp(-Math.min(delta, 50) / 85));
   if (Math.abs(target - progress) < 0.001) progress = target;
-  changeChapter(Math.round(progress));
+  changeChapter(Math.round(target));
   document.querySelector(".progress-track span").style.transform =
     "scaleX(" + progress / 5 + ")";
   if (sectionVisible) renderOnce();
@@ -261,20 +264,19 @@ function schedule() {
   if (!frame && !document.hidden) frame = requestAnimationFrame(animate);
 }
 function readScroll() {
-  target = clamp(((scrollY - storyTop) / storyTravel) * 5, 0, 5);
-  sectionVisible =
+  const visible =
     scrollY + innerHeight > storyTop &&
     scrollY < storyTop + journey.offsetHeight;
-  schedule();
+  if (visible !== sectionVisible) {
+    sectionVisible = visible;
+    journey.classList.toggle("in-view", visible);
+    if (visible) schedule();
+  }
 }
 function measure() {
   storyTop = journey.getBoundingClientRect().top + scrollY;
-  storyTravel = Math.max(
-    1,
-    journey.offsetHeight -
-      document.querySelector(".journey-stage").offsetHeight,
-  );
   readScroll();
+  schedule();
 }
 function updateMotion() {
   reduced = motionQuery.matches || manualReduced;
@@ -510,6 +512,7 @@ function selectFinding(index) {
     finding.observation;
   document.querySelector("#finding-model").textContent = finding.model;
   document.querySelector("#finding-meaning").textContent = finding.meaning;
+  updateFindingVoice();
   positionEvidence();
 }
 findingButtons.forEach((button, index) =>
@@ -558,3 +561,61 @@ document
       /* The native play control remains available. */
     }
   });
+
+let findingVoice = "patient";
+const voiceButtons = [...document.querySelectorAll("[data-voice]")];
+function updateFindingVoice() {
+  const technical = findingVoice === "technical";
+  const finding = findings[selectedFinding];
+  document.querySelector("#finding-observation").textContent = technical
+    ? [
+        "Seçili ROI içinde çevre mineye göre açık renkli bir alan izleniyor.",
+        "Seçili ROI, oklüzal yüzeydeki koyu bölgeye karşılık geliyor.",
+      ][selectedFinding]
+    : finding.observation;
+  document.querySelector("#finding-model").textContent = technical
+    ? [
+        "Instance etiketi: White Spot. Kaynakta verilen skor: 0,91. Sınır, bu anlatımda yeniden çizilmiş bir piksel maskesiyle gösteriliyor.",
+        "Instance etiketi: Caries. Kaynakta verilen skor: 0,96. Sınır, bu anlatımda yeniden çizilmiş bir piksel maskesiyle gösteriliyor.",
+      ][selectedFinding]
+    : finding.model;
+  document.querySelector("#finding-meaning").textContent = technical
+    ? "Görüntü + instance etiketi + maske bilgisi açıklama katmanına aktarılır. Skor klinik doğruluk yüzdesi olarak yorumlanmaz; klinik değerlendirme ayrıca gerekir."
+    : finding.meaning;
+  const layout = document.querySelector(".evidence-layout");
+  layout.classList.remove("connecting");
+  if (!reduced) requestAnimationFrame(() => layout.classList.add("connecting"));
+}
+voiceButtons.forEach((button) =>
+  button.addEventListener("click", () => {
+    findingVoice = button.dataset.voice;
+    voiceButtons.forEach((item) =>
+      item.setAttribute("aria-pressed", String(item === button)),
+    );
+    updateFindingVoice();
+  }),
+);
+document.querySelector(".report-download").addEventListener("click", () => {
+  const finding = findings[selectedFinding];
+  const text = [
+    "DentAI / Örnek gözlem notu",
+    finding.label,
+    "",
+    ...["#finding-observation", "#finding-model", "#finding-meaning"].map(
+      (selector) => document.querySelector(selector).textContent,
+    ),
+    "",
+    "Kaynak görsele dayalı temsilî anlatım. Yeni model çıkarımı yapılmadı. Hekim değerlendirmesi gerekir.",
+  ].join("\n");
+  const url = URL.createObjectURL(
+    new Blob([text], { type: "text/plain;charset=utf-8" }),
+  );
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "DentAI-ornek-gozlem-" + (selectedFinding + 1) + ".txt";
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+
+import { initWorkshops } from "./workshops.js";
+initWorkshops(() => reduced);

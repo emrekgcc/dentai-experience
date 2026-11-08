@@ -1,0 +1,41 @@
+{
+  "provider": "Google Gemini web",
+  "mode": "Pro",
+  "date": "2026-11-08",
+  "method": "Tek istekte sekiz yönerge varyantı; metin tabanlı temsili gözlem; görüntü yüklenmedi.",
+  "prompt": "Bir web deneyimi için Türkçe yönerge denemesi yapıyorum. Aşağıdaki veri tamamen temsili bir gözlem, gerçek hasta bilgisi veya yüklenmiş bir görüntü yok. Her biri ayrı bir yönerge varyantı olan 8 koşul için doğrudan örnek açıklama üret. Gözlem: İşaretli diş yüzeyi alanı çevresindeki mineye göre daha açık görünüyor. Kaynak etiketi White Spot, kaynak skoru 0,91. Bu skor yeniden ölçülmedi. Tüm varyantlarda yeni bulgu, hastalık nedeni, kesin tanı veya tedavi önerisi ekleme. Her çıktı en fazla 2 cümle olsun. JSON dizisi döndür. Her nesne {id, output} şeklinde olsun. id 0..7 olsun. Bit değerleri 1=bölgeye odaklan (yalnızca işaretli alanı anlat), 2=belirsizliği açıkça belirt (nedeninin tek görüntüden belirlenemediğini ve hekim değerlendirmesi gereğini söyle), 4=gündelik dil kullan (teknik terim yerine sade Türkçe). Bit kapalıysa ilgili özel yönerge eklenmemiş kabul edilsin. id0 hiçbiri açık değil, id1 yalnız odak, id2 yalnız belirsizlik, id3 odak+belirsizlik, id4 yalnız gündelik dil, id5 odak+gündelik dil, id6 belirsizlik+gündelik dil, id7 hepsi. Çıktılara değerlendirme veya deneyi öven yorum ekleme. Bunlar tıbbi sonuç değil, metin üslubu ve yönerge tasarımı için örneklerdir.",
+  "outputs": [
+    {
+      "id": 0,
+      "output": "İşaretli diş yüzeyi alanı, çevresindeki mineye göre daha açık görünmekte olup 0,91 kaynak skoru ile White Spot olarak etiketlenmiştir. Bu skor sistem tarafından yeniden ölçülmemiştir."
+    },
+    {
+      "id": 1,
+      "output": "Yalnızca işaretli alana odaklanıldığında, bu bölgenin çevredeki mineye kıyasla daha açık renkte olduğu ve 0,91 skoruyla White Spot etiketi taşıdığı görülmektedir. Söz konusu skor daha sonradan yeniden değerlendirilmemiştir."
+    },
+    {
+      "id": 2,
+      "output": "İşaretli diş yüzeyi çevresindeki mineye göre daha açık görünmekte olup, yeniden ölçülmemiş 0,91 skoruyla White Spot etiketine sahiptir. Ancak bu durumun nedeni tek bir görüntüden kesin olarak anlaşılamayacağından mutlaka hekim değerlendirmesi gerekir."
+    },
+    {
+      "id": 3,
+      "output": "Sadece işaretli bölge incelendiğinde, bu alanın mineye göre daha açık renkli olduğu ve yeniden ölçülmeyen 0,91 skoruyla White Spot olarak etiketlendiği izlenmektedir. Tek görüntüden kesin bir neden belirlenemeyeceği için klinik hekim muayenesi şarttır."
+    },
+    {
+      "id": 4,
+      "output": "İşaretlenen yer dişin etrafındaki normal yüzeyine göre daha açık renkli duruyor ve sistem buna 0,91 puanla beyaz leke adını vermiş. Bu verilen puan daha sonradan tekrar ölçülmemiştir."
+    },
+    {
+      "id": 5,
+      "output": "Sadece işaretli olan kısma baktığımızda, buranın etrafına göre daha açık renkli olduğu ve beyaz leke olarak 0,91 puan aldığı görülüyor. Bu belirlenen puan sonradan bir daha ölçülmemiştir."
+    },
+    {
+      "id": 6,
+      "output": "İşaretli yer dişin diğer kısımlarına göre daha açık renkte duruyor ve tekrar ölçülmeyen 0,91 puanlı bir beyaz leke olarak tespit edilmiş. Fakat sadece bu resme bakılarak asıl sebep bilinemeyeceğinden bir diş hekiminin kontrol etmesi gerekir."
+    },
+    {
+      "id": 7,
+      "output": "Sadece işaretlenen kısma odaklandığımızda, buranın etrafına göre daha açık renkte olduğu ve yeniden ölçülmeyen 0,91 puanlık beyaz leke olarak belirlendiği görülüyor. Yalnızca tek bir fotoğrafla sorunun ne olduğu tam anlaşılamayacağından bir diş hekiminin muayene etmesi şarttır."
+    }
+  ]
+}

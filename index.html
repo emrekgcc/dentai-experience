@@ -29,8 +29,8 @@
         ></a
       >
       <nav aria-label="Ana menü">
-        <a href="#analysis">Analizi izle</a><a href="#lab">Perde arkası</a
-        ><a href="#creator">Geliştirici</a>
+        <a href="#top">İlk bakış</a><a href="#prompt-lab">İstemi dene</a
+        ><a href="#lab">Perde arkası</a><a href="#creator">Geliştirici</a>
       </nav>
       <button
         class="motion-control"
@@ -41,11 +41,88 @@
       </button>
     </header>
     <main>
-      <section class="analysis-cinema" id="top">
+      <section class="first-look section-shell" id="top">
+        <div class="first-question">
+          <span class="eyebrow">DentAI / Küçük bir dikkat deneyi</span>
+          <h1>İlk bakışta,<br /><em>sence hangisi?</em></h1>
+          <p>
+            Aynı dişteki iki açık alan. Hangisini daha yakından incelemek
+            isterdin?
+          </p>
+          <div
+            class="challenge-choices"
+            role="group"
+            aria-label="İncelenecek alanı seç"
+          >
+            <button data-choice="a" aria-pressed="false">
+              <b>A</b> Üstteki parlak alan</button
+            ><button data-choice="b" aria-pressed="false">
+              <b>B</b> Ortadaki açık alan</button
+            ><button data-choice="unsure" aria-pressed="false">
+              <b>?</b> Bu kareyle karar veremem
+            </button>
+          </div>
+        </div>
+        <div class="challenge-visual">
+          <svg
+            viewBox="0 0 441 269"
+            role="img"
+            aria-label="A ve B işaretleriyle iki açık alanın gösterildiği örnek diş fotoğrafı"
+          >
+            <defs>
+              <clipPath id="challenge-clip">
+                <rect width="441" height="269" rx="4" />
+              </clipPath>
+            </defs>
+            <g clip-path="url(#challenge-clip)">
+              <image
+                href="assets/segmentation-reference.png"
+                x="-20"
+                y="-105"
+                width="950"
+                height="513"
+              />
+              <path
+                class="challenge-answer-mask"
+                pathLength="1"
+                d="M93 132 Q91 156 103 163 Q120 163 143 158 Q164 141 177 122 Q188 101 178 85 Q169 79 156 72 Q144 62 130 69 Q116 77 113 97 Q110 116 93 132Z"
+              />
+              <g class="photo-pin">
+                <circle cx="123" cy="47" r="11" />
+                <text x="123" y="51">A</text>
+                <path d="M123 59 L123 72" />
+              </g>
+              <g class="photo-pin">
+                <circle cx="150" cy="130" r="11" />
+                <text x="150" y="134">B</text>
+              </g>
+            </g>
+          </svg>
+          <div class="challenge-response" aria-live="polite" aria-atomic="true">
+            <span class="eyebrow" id="challenge-status"
+              >Önce senin gözlemin</span
+            >
+            <h3 id="challenge-result">Bakmak kolay.<br />Ayırt etmek?</h3>
+            <p id="challenge-explanation">
+              Bir alanı seç. Ardından kaynak görseldeki işareti açıp bu farkın
+              neden önemli olduğunu inceleyelim.
+            </p>
+          </div>
+          <small
+            >Bu bir tanı testi değildir. Kaynak etiketini ve belirsizliği
+            birlikte okumayı anlatan bir örnektir.</small
+          >
+        </div>
+        <div class="challenge-next">
+          <a href="#analysis">Maskelerin oluşumunu izle ↓</a
+          ><button id="challenge-reset" hidden>Yeniden bak ↺</button>
+        </div>
+      </section>
+      <section class="analysis-cinema" id="cinema">
         <div class="cinema-heading">
           <div>
             <span class="eyebrow">DentAI / Görüntüden açıklamaya</span>
-            <h1>Bir görüntünün<br /><em>içine bak.</em></h1>
+            <h2>Bir görüntünün<br /><em>içine bak.</em></h2>
           </div>
           <p>
             Önce fotoğraf. Sonra sınırlar. En sonunda, o işaretlerin ne
@@ -205,6 +282,17 @@
                 02 / İkinci alan
               </button>
             </div>
+            <div
+              class="reading-modes"
+              role="group"
+              aria-label="Açıklama görünümü"
+            >
+              <button data-voice="patient" aria-pressed="true">
+                Kullanıcıya anlat</button
+              ><button data-voice="technical" aria-pressed="false">
+                Teknik görünüm
+              </button>
+            </div>
             <div class="finding-text" aria-live="polite" aria-atomic="true">
               <span class="eyebrow" id="finding-label"
                 >Kaynak etiketi / White Spot</span
@@ -234,6 +322,7 @@
                 </div>
               </dl>
             </div>
+            <button class="report-download">Bu gözlemi indir ↓</button>
             <button class="evidence-film-link">
               Bu bölgenin animasyonunu izle ↗
             </button>
@@ -340,7 +429,8 @@
             </div>
             <div class="progress-track"><span></span></div>
             <span class="scroll-hint"
-              >Kaydırarak ilerle <span aria-hidden="true">↓</span></span
+              >Adımları yukarıdaki düğmelerle seç
+              <span aria-hidden="true">↓</span></span
             >
           </div>
         </div>
@@ -368,6 +458,66 @@
         </div>
       </section>
 
+      <section class="quality-check section-shell" id="quality-check">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow"
+              >Planlanan çekim kontrolü / Etkileşimli senaryo</span
+            >
+            <h2>Bazen doğru adım,<br /><em>yeniden çekmek.</em></h2>
+          </div>
+          <p>
+            Çekim koşulunu değiştir.<br />Akışın neden devam ettiğini ya da
+            durduğunu gör.
+          </p>
+        </div>
+        <div class="quality-layout">
+          <div class="quality-sample" data-condition="blur">
+            <svg
+              viewBox="0 0 441 269"
+              aria-label="Çekim kalitesi senaryosu için kullanılan örnek diş fotoğrafı"
+              role="img"
+            >
+              <image
+                href="assets/segmentation-reference.png"
+                x="-20"
+                y="-105"
+                width="950"
+                height="513"
+              /></svg
+            ><span class="glare-effect" aria-hidden="true"></span
+            ><span id="quality-image-label">Bulanık çekim senaryosu</span>
+          </div>
+          <div class="quality-console">
+            <div class="quality-options" role="group" aria-label="Çekim koşulu">
+              <button data-condition="blur" aria-pressed="true">Bulanık</button
+              ><button data-condition="glare" aria-pressed="false">
+                Aşırı parlama</button
+              ><button data-condition="clear" aria-pressed="false">
+                Daha net
+              </button>
+            </div>
+            <p>
+              Bu örnekte çekim koşulu arayüzde canlandırılır. Kalite ölçümü veya
+              model çıkarımı yapılmaz.
+            </p>
+            <button id="quality-run" class="button dark">
+              Çekimi kontrol et <span>→</span>
+            </button>
+            <div id="quality-result" aria-live="polite" aria-atomic="true">
+              <span class="quality-state">Bir çekim koşulu seç</span>
+              <h3>Analizden önce,<br />görüntüye bak.</h3>
+              <p>
+                Tekrar çekim istemek de tasarlanması gereken bir kullanıcı
+                deneyimi.
+              </p>
+            </div>
+            <button id="quality-retry" hidden>
+              Daha net bir kareyle tekrar dene ↺
+            </button>
+          </div>
+        </div>
+      </section>
       <section id="lab" class="lab section-shell">
         <div class="section-heading">
           <div>
@@ -443,6 +593,73 @@
         </div>
       </section>
 
+      <section class="prompt-lab section-shell" id="prompt-lab">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Yönerge atölyesi</span>
+            <h2>Bir cümle ekle.<br /><em>Anlatım değişsin.</em></h2>
+          </div>
+          <p>
+            Aynı gözlemle başla.<br />Açıklamanın sınırlarını ve dilini sen seç.
+          </p>
+        </div>
+        <p class="provenance">
+          Gemini web’in Pro modunda, aynı istekte sekiz yönerge varyantı
+          üretildi. Denemede temsili bir metin gözlemi kullanıldı; görüntü
+          yüklenmedi. Seçimlerin aşağıdaki kaydedilmiş yanıtı değiştirir.
+          <a href="assets/gemini-prompt-record.json" download
+            >Kaynak istemi ve ham çıktıları indir ↗</a
+          >
+        </p>
+        <div class="prompt-sandbox">
+          <div class="instruction-builder">
+            <span class="eyebrow">İstemi kur</span>
+            <p class="base-instruction">
+              İşaretlenen açık alan hakkında bir açıklama yaz.
+            </p>
+            <label
+              ><input id="rule-focus" type="checkbox" checked /><span
+                ><b>Bölgeye odaklan</b
+                ><small>Yalnızca işaretlenen alanı ele al.</small></span
+              ></label
+            ><label
+              ><input id="rule-uncertainty" type="checkbox" checked /><span
+                ><b>Belirsizliği belirt</b
+                ><small>Fotoğraftan çıkarılamayanı açıkça söyle.</small></span
+              ></label
+            ><label
+              ><input id="rule-language" type="checkbox" checked /><span
+                ><b>Gündelik dil kullan</b
+                ><small>Teknik ifadeleri anlaşılır hâle getir.</small></span
+              ></label
+            >
+            <details class="assembled-prompt">
+              <summary>Oluşan yönergeyi oku</summary>
+              <pre id="assembled-prompt"></pre>
+            </details>
+            <button id="copy-instruction">Yönergeyi kopyala ↗</button
+            ><span id="copy-status" role="status"></span>
+          </div>
+          <div class="instruction-output" aria-live="polite" aria-atomic="true">
+            <span class="eyebrow">Kaydedilmiş Gemini çıktısı</span>
+            <blockquote id="sandbox-output"></blockquote>
+            <div class="output-notes" id="output-notes"></div>
+          </div>
+        </div>
+        <div class="prompt-comparison">
+          <span class="eyebrow">Önce / Şimdi</span>
+          <div>
+            <p>
+              <small>Ek yönergeler kapalı / Varyant 0</small
+              ><span id="comparison-baseline">Başlangıç kaydı yükleniyor…</span>
+            </p>
+            <p>
+              <small>Seçtiğin yönerge varyantının kaydı</small
+              ><span id="comparison-output"></span>
+            </p>
+          </div>
+        </div>
+      </section>
       <section id="prompt" class="prompt-section section-shell">
         <div class="prompt-heading">
           <span class="eyebrow">Gemini ile çalışmak</span>

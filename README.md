@@ -2,7 +2,7 @@
 
 Gemini Prompt Arena için hazırlanan etkileşimli DentAI proje anlatımı.
 
-Sayfa, çekimden ön rapora kadar altı adımı kaydırma ile anlatır. Diş yüzeyi ve ona bağlı maske WebGL ile çizilir. Örnekler, karşılaştırma sürgüsü ve istem bölümleri ziyaretçinin kontrolündedir. Görseller, maske ve rapor temsilidir. Canlı model çıkarımı veya hasta verisi işleme yapılmaz.
+Sayfa, çekimden ön rapora kadar altı adımı ziyaretçinin seçtiği düğmelerle anlatır. Diş yüzeyi ve ona bağlı maske WebGL ile çizilir. Örnekler, karşılaştırma sürgüsü ve istem bölümleri ziyaretçinin kontrolündedir. Görseller, maske ve rapor temsilidir. Canlı model çıkarımı veya hasta verisi işleme yapılmaz.
 
 ## Yerel çalışma
 
@@ -53,3 +53,15 @@ Masaüstü 1440 ve mobil 390 piksel genişlikte video yüklemesi, bölüm atlama
 ## Etkileşimli bulgu incelemesi
 
 Fotoğraf üzerindeki iki bölge dokunma veya klavyeyle seçilebilir. Seçim, kaynak etiketini ve açıklamayı günceller. Yakınlaştırma, maske görünürlüğü, yoğunluk sürgüsü ve ilgili video anına geçiş desteklenir. Yeni bir çıkarım çalıştırılmaz. 1440, 390 ve 320 piksel genişlikte kontroller doğrulandı.
+
+## Sürekli sayfa akışı ve deney atölyeleri
+
+Tam ekranı uzun süre sabitleyen kaydırma kaldırıldı. Analiz panelindeki altı adım düğmelerle seçilir. Sayfadan ayrılıp geri gelmek seçimi değiştirmez. Sabit görüntü, sayfa kaydırılıyor diye tekrar çizilmez.
+
+- İlk bakış deneyi üç seçeneğe farklı açıklamalar verir ve kaynak maskesini açar. Doğru tanı puanlaması yapılmaz.
+- Yönerge atölyesi, üç seçeneğin sekiz birleşimini gerçek Gemini metin çıktılarıyla gösterir. Gemini web Pro modunda tek bir istekte sekiz varyant üretildi. Bu, metin tabanlı bir toplu denemedir. Görüntü yüklenmedi ve bağımsız bir performans deneyi yapılmadı. İstem ve ham çıktılar assets/gemini-prompt-record.json içinde korunur.
+- Kullanıcı ve teknik anlatım aynı seçili bulguyu, kaynak skorunu ve maskeyi korur. Görünüm geçişinde kısa bir bağlantı animasyonu kullanılır.
+- Bulanık, parlamalı ve daha net çekim senaryoları planlanan kalite kontrol akışını gösterir. Görüntü kalitesi ölçümü veya klinik çıkarım yapılmaz.
+- Seçili gözlem metin dosyası olarak indirilebilir. Oluşturulan yönerge kopyalanabilir.
+
+1440×960, 768×1024, 390×844 ve 320×568 ekranlarda yeni etkileşimler, indirme, adım seçiminin korunması, yatay taşma ve azaltılmış hareket kontrol edildi.
