@@ -112,6 +112,134 @@
           ><a href="#journey">Uygulamanın tüm akışı ↓</a>
         </div>
       </section>
+      <section class="evidence section-shell" id="evidence">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Şimdi sen incele</span>
+            <h2>İki bölge.<br /><em>İki ayrı gözlem.</em></h2>
+          </div>
+          <p>
+            Görüntüde bir bölgeye dokun.<br />Maskesini ve açıklamasını birlikte
+            incele.
+          </p>
+        </div>
+        <div class="evidence-layout">
+          <div class="evidence-workspace">
+            <div class="evidence-toolbar">
+              <span>ÖRNEK GÖRÜNTÜ / 01</span
+              ><button id="evidence-zoom" aria-pressed="false">
+                Yakından bak +
+              </button>
+            </div>
+            <svg
+              class="evidence-image"
+              viewBox="0 0 441 269"
+              role="group"
+              aria-label="İki bölgenin seçilebildiği örnek ağız içi görüntü"
+            >
+              <defs>
+                <clipPath id="evidence-clip">
+                  <rect width="441" height="269" />
+                </clipPath>
+              </defs>
+              <g clip-path="url(#evidence-clip)">
+                <g class="evidence-camera">
+                  <image
+                    href="assets/segmentation-reference.png"
+                    x="-20"
+                    y="-105"
+                    width="950"
+                    height="513"
+                  />
+                  <g class="evidence-masks">
+                    <path
+                      class="evidence-region selected"
+                      data-region="0"
+                      role="button"
+                      tabindex="0"
+                      aria-label="Açık renkli bölgeyi incele"
+                      aria-pressed="true"
+                      pathLength="1"
+                      d="M93 132 Q91 156 103 163 Q120 163 143 158 Q164 141 177 122 Q188 101 178 85 Q169 79 156 72 Q144 62 130 69 Q116 77 113 97 Q110 116 93 132Z"
+                    />
+                    <path
+                      class="evidence-region"
+                      data-region="1"
+                      role="button"
+                      tabindex="0"
+                      aria-label="İkinci bölgeyi incele"
+                      aria-pressed="false"
+                      pathLength="1"
+                      d="M267 95 Q273 82 283 82 Q299 84 301 96 Q302 111 288 118 Q271 124 266 109 Q263 102 267 95Z"
+                    />
+                  </g>
+                </g>
+              </g>
+            </svg>
+            <div class="evidence-controls">
+              <button id="evidence-mask" aria-pressed="true">Maske açık</button
+              ><label for="mask-strength"
+                >Maske yoğunluğu
+                <input
+                  id="mask-strength"
+                  type="range"
+                  min="10"
+                  max="70"
+                  value="40"
+              /></label>
+            </div>
+            <small
+              >Kaynak görsel üzerinde temsilî maskeleme. Bölge seçimi yeni bir
+              model analizi çalıştırmaz.</small
+            >
+          </div>
+          <div class="evidence-reading">
+            <div
+              class="region-options"
+              role="group"
+              aria-label="İncelenecek bölge"
+            >
+              <button data-find="0" aria-pressed="true">
+                01 / Açık renkli alan</button
+              ><button data-find="1" aria-pressed="false">
+                02 / İkinci alan
+              </button>
+            </div>
+            <div class="finding-text" aria-live="polite" aria-atomic="true">
+              <span class="eyebrow" id="finding-label"
+                >Kaynak etiketi / White Spot</span
+              >
+              <h3 id="finding-title">Renk farkının<br />izini sür.</h3>
+              <dl>
+                <div>
+                  <dt>Görüntüdeki gözlem</dt>
+                  <dd id="finding-observation">
+                    İlk dişin yüzeyinde çevresine göre daha açık görünen bir
+                    alan var.
+                  </dd>
+                </div>
+                <div>
+                  <dt>Model çıktısında</dt>
+                  <dd id="finding-model">
+                    Kaynak görsel bu alanı “White Spot” olarak etiketliyor ve
+                    0,91 skorunu gösteriyor.
+                  </dd>
+                </div>
+                <div>
+                  <dt>Açıklamaya dönüşürken</dt>
+                  <dd id="finding-meaning">
+                    Ön rapor, görülen renk farkını anlatır. Farkın nedenini
+                    belirlemek için klinik değerlendirme gerekir.
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <button class="evidence-film-link">
+              Bu bölgenin animasyonunu izle ↗
+            </button>
+          </div>
+        </div>
+      </section>
       <section class="journey" id="journey" aria-label="DentAI çalışma akışı">
         <div class="journey-stage">
           <div class="stage-top">
@@ -535,12 +663,7 @@
         <div class="footer-brand">
           DentAI<span>Bir görüntünün yolculuğu.</span>
         </div>
-        <p>
-          Bu web deneyiminin kod ve görsel anlatımının hazırlanmasında ChatGPT
-          desteği kullanıldı. Diş modeli, görüntüler ve rapor çıktısı
-          temsilidir. Çalışma, Emre Küçükgöçer’in DentAI geliştirme deneyimini
-          anlatır.
-        </p>
+
         <a href="#top">Başa dön ↑</a>
       </footer>
     </main>

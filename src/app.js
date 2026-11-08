@@ -427,3 +427,134 @@ document.addEventListener("visibilitychange", () => {
 motionButton.addEventListener("click", () => {
   if (reduced) film.pause();
 });
+
+const findings = [
+  {
+    label: "Kaynak etiketi / White Spot",
+    title: "Renk farkının<br>izini sür.",
+    observation:
+      "İlk dişin yüzeyinde çevresine göre daha açık görünen bir alan var.",
+    model:
+      "Kaynak görsel bu alanı “White Spot” olarak etiketliyor ve 0,91 skorunu gösteriyor.",
+    meaning:
+      "Ön rapor, görülen renk farkını anlatır. Farkın nedenini belirlemek için klinik değerlendirme gerekir.",
+    focus: [138, 120],
+    time: 3,
+  },
+  {
+    label: "Kaynak etiketi / Caries",
+    title: "İkinci işarete<br>yakından bak.",
+    observation:
+      "İkinci dişin çiğneme yüzeyinde çevresinden daha koyu görünen küçük bir bölge var.",
+    model:
+      "Kaynak görsel bu alanı “Caries” olarak etiketliyor ve 0,96 skorunu gösteriyor.",
+    meaning:
+      "Açıklama, görülen alanı ve model etiketini birlikte ele alır. Etiketin klinik karşılığı hekim tarafından değerlendirilir.",
+    focus: [283, 102],
+    time: 6,
+  },
+];
+const findingButtons = [...document.querySelectorAll("[data-find]")];
+const regions = [...document.querySelectorAll("[data-region]")];
+const evidenceCamera = document.querySelector(".evidence-camera");
+const zoomButton = document.querySelector("#evidence-zoom");
+const maskButton = document.querySelector("#evidence-mask");
+let selectedFinding = 0;
+let evidenceZoom = false;
+let zoomFrame = 0;
+let currentView = [0, 0, 1];
+
+function positionEvidence() {
+  cancelAnimationFrame(zoomFrame);
+  const [x, y] = findings[selectedFinding].focus;
+  const scale = evidenceZoom ? 1.65 : 1;
+  const target = evidenceZoom
+    ? [220.5 - x * scale, 134.5 - y * scale, scale]
+    : [0, 0, 1];
+  const from = [...currentView];
+  const start = performance.now();
+  function update(now) {
+    const fraction = reduced ? 1 : Math.min(1, (now - start) / 650);
+    const ease = 1 - Math.pow(1 - fraction, 3);
+    currentView = from.map(
+      (value, index) => value + (target[index] - value) * ease,
+    );
+    evidenceCamera.setAttribute(
+      "transform",
+      "translate(" +
+        currentView[0] +
+        " " +
+        currentView[1] +
+        ") scale(" +
+        currentView[2] +
+        ")",
+    );
+    if (fraction < 1) zoomFrame = requestAnimationFrame(update);
+  }
+  zoomFrame = requestAnimationFrame(update);
+}
+
+function selectFinding(index) {
+  selectedFinding = index;
+  findingButtons.forEach((button, i) =>
+    button.setAttribute("aria-pressed", String(i === index)),
+  );
+  regions.forEach((region, i) => {
+    region.setAttribute("aria-pressed", String(i === index));
+    region.classList.toggle("selected", i === index);
+  });
+  const finding = findings[index];
+  document.querySelector("#finding-label").textContent = finding.label;
+  document.querySelector("#finding-title").innerHTML = finding.title;
+  document.querySelector("#finding-observation").textContent =
+    finding.observation;
+  document.querySelector("#finding-model").textContent = finding.model;
+  document.querySelector("#finding-meaning").textContent = finding.meaning;
+  positionEvidence();
+}
+findingButtons.forEach((button, index) =>
+  button.addEventListener("click", () => selectFinding(index)),
+);
+regions.forEach((region, index) => {
+  region.addEventListener("click", () => selectFinding(index));
+  region.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      selectFinding(index);
+    }
+  });
+});
+zoomButton.addEventListener("click", () => {
+  evidenceZoom = !evidenceZoom;
+  zoomButton.setAttribute("aria-pressed", String(evidenceZoom));
+  zoomButton.textContent = evidenceZoom ? "Tüm görüntü ↙" : "Yakından bak +";
+  positionEvidence();
+});
+maskButton.addEventListener("click", () => {
+  const enabled = maskButton.getAttribute("aria-pressed") !== "true";
+  maskButton.setAttribute("aria-pressed", String(enabled));
+  maskButton.textContent = enabled ? "Maske açık" : "Maske kapalı";
+  document
+    .querySelector(".evidence-masks")
+    .classList.toggle("mask-hidden", !enabled);
+});
+document.querySelector("#mask-strength").addEventListener("input", (event) => {
+  document
+    .querySelector(".evidence-masks")
+    .style.setProperty("--mask-strength", Number(event.target.value) / 100);
+});
+document
+  .querySelector(".evidence-film-link")
+  .addEventListener("click", async () => {
+    film.scrollIntoView({ behavior: "instant", block: "center" });
+    if (!film.readyState)
+      await new Promise((resolve) =>
+        film.addEventListener("loadedmetadata", resolve, { once: true }),
+      );
+    film.currentTime = findings[selectedFinding].time;
+    try {
+      await film.play();
+    } catch {
+      /* The native play control remains available. */
+    }
+  });

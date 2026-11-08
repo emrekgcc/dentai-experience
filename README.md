@@ -49,3 +49,7 @@ Film, görüntü hazırlama, segmentasyon, bulgular ve açıklama bölümlerinde
 - tools/serve.cjs — video aralık isteklerini destekleyen yerel sunucu
 
 Masaüstü 1440 ve mobil 390 piksel genişlikte video yüklemesi, bölüm atlamaları, seçili bölüm durumları, yatay taşma ve 3B akışa geçiş doğrulandı. H.264 dosya bilgisi ffprobe ile kontrol edildi. GitHub Pages bu aşamada etkinleştirilmedi.
+
+## Etkileşimli bulgu incelemesi
+
+Fotoğraf üzerindeki iki bölge dokunma veya klavyeyle seçilebilir. Seçim, kaynak etiketini ve açıklamayı günceller. Yakınlaştırma, maske görünürlüğü, yoğunluk sürgüsü ve ilgili video anına geçiş desteklenir. Yeni bir çıkarım çalıştırılmaz. 1440, 390 ve 320 piksel genişlikte kontroller doğrulandı.
