@@ -1,0 +1,22 @@
+{
+  "provider": "Google Gemini web video generation",
+  "date": "2026-11-08",
+  "prompt": "Create an 8-second cinematic scientific-art film, landscape 16:9. It is an original visual study about the difference between a surface feature and a moving reflection. ONE continuous macro camera shot, no cuts. A realistic clean ivory human molar crown sits on a dark muted petrol studio background. The enamel has fine translucent depth, natural rounded cusps and one small matte chalk-white patch on a front-facing side surface. No gums, roots, blood, instruments or person. At 0–3 seconds a broad soft studio light slowly moves: a glossy reflection glides across the tooth while the matte white patch stays fixed. The camera makes a slow physically smooth 12-degree orbit, maintaining sharp macro focus on that patch. At 3–6 seconds a hair-thin warm amber contour gently traces ONLY the small matte patch, conforming precisely to the curved enamel surface, remaining surface-locked as the camera moves. The glossy light reflection must remain unmarked. At 6–8 seconds the camera eases slightly closer and holds the completed restrained translucent amber outline, with the original enamel visible through it. Premium photoreal product-cinema lighting, physically plausible material, very smooth motion, subtle depth of field, quiet ambient studio sound, no speech. This is a conceptual visualisation and must make no diagnosis or accuracy claim. No text, letters, subtitles, numbers, logos, brand names, application interface, split-screen, floating bounding boxes, lasers, fantasy organisms, exaggerated decay or commercial call to action. Preserve any platform-generated provenance marks.",
+  "requestedDurationSeconds": 8,
+  "file": "gemini-surface-study-original.mp4",
+  "nativeResolution": "1280x720",
+  "nativeFrameRate": 24,
+  "durationSeconds": 10.026667,
+  "method": "Text-to-video; kavramsal yüzey ve ışık çalışması; hasta görüntüsü yüklenmedi.",
+  "refinement": {
+    "prompt": "Create a new improved version of the preceding conceptual tooth-and-light film. Keep the same 16:9 dark petrol studio, single ivory molar and subtle macro photographic realism. The first result achieved a calm orbit and a moving reflection, but its amber double contour drifted around the white patch. Fix that specific issue. Use ONE hair-thin single amber edge exactly coincident with the irregular chalk-white patch boundary. Treat the amber edge as part of the tooth material itself, never as a free-floating graphic. Keep the tooth almost still with only a very slow 5-degree orbit and stable framing, so the patch and contour cannot slide relative to one another. At the start, show the enamel and patch with no amber marking; a soft specular reflection travels across an adjacent unmarked part of the tooth. Between second 3 and 6 let the surface-bound edge fade gently into visibility, with a very faint transparent amber fill inside the patch, rather than drawing a moving circle. Hold the completed outline for the remainder. Preserve the matte patch texture and natural ivory material. No text, branding, voices, clinical claims, UI, number, diagnostic certainty, dramatic damage or music. Quiet studio ambience. A visually precise conceptual study, not an actual detection result. Keep all platform provenance marks.",
+    "file": "gemini-surface-study-take2.mp4",
+    "goal": "Daha yavaş kamera ve yüzey malzemesine bağlı tek kontur; ilk çıktıda görülen çift çizgi ve kaymayı azaltma.",
+    "nativeResolution": "1280x720",
+    "nativeFrameRate": 24,
+    "durationSeconds": 10.026667,
+    "review": "İkinci çıktı ilkine görsel olarak çok benzer kaldı. Tek kontur ve sınır takibi talebi tam gerçekleşmiş kabul edilmedi."
+  },
+  "review": "İlk çıktı ışık geçişini ve sakin kamerayı üretti. Amber kontur yer yer çift çizgiye dönüştü; beyaz alanın sınırını tam izlemiyor.",
+  "selectedFile": "gemini-surface-study-original.mp4"
+}

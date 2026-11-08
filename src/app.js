@@ -357,41 +357,6 @@ exampleButtons.forEach((button, index) =>
   }),
 );
 
-const promptParts = [
-  [
-    "Bir ağız içi görüntüsünde işaretlenen alanı, kişinin anlayabileceği kısa bir ön değerlendirmeyle açıkla.",
-    "Önce görevi tanımlıyorum.",
-    "Modelden işaretlenen bölgeye odaklanmasını istiyorum. Böylece açıklamanın hangi soruya yanıt vermesi gerektiği belirginleşiyor.",
-  ],
-  [
-    "Yalnızca verilen fotoğrafa ve segmentasyon çıktısındaki bölge bilgisine dayan. Görüntüde doğrulanamayan bulgular ekleme.",
-    "Açıklamanın dayanağını belirliyorum.",
-    "Görüntü ile model çıktısını birlikte kullanıyorum. Böylece metindeki gözlemin hangi alana karşılık geldiği takip edilebiliyor.",
-  ],
-  [
-    "Kesin tanı koyma veya tedavi önerme. Bir bulgunun nedenini fotoğraftan belirleyemiyorsan bu belirsizliği açıkça ifade et.",
-    "Belirsizliğe yer bırakıyorum.",
-    "Bir fotoğrafın söyleyebilecekleri sınırlı. Kullanıcının karşısına çıkan metnin de bu sınırı koruması için yönergeyi açık yazıyorum.",
-  ],
-  [
-    "Kısa cümleler ve gündelik Türkçe kullan. Yanıtı gözlem, açıklama ve sonraki adım başlıklarıyla düzenle.",
-    "Son olarak, okunabilir kılıyorum.",
-    "Teknik terimleri kişinin anlayacağı bir dile indiriyorum. Aynı yapıdaki kısa raporlar, kullanıcıya ne gördüğümüzü ve neyi henüz bilmediğimizi anlatmayı kolaylaştırıyor.",
-  ],
-];
-const promptButtons = [...document.querySelectorAll("[data-prompt]")];
-promptButtons.forEach((button, index) =>
-  button.addEventListener("click", () => {
-    promptButtons.forEach((item, i) =>
-      item.setAttribute("aria-pressed", String(i === index)),
-    );
-    const [code, title, reason] = promptParts[index];
-    document.querySelector("#prompt-code").textContent = code;
-    document.querySelector("#prompt-title").textContent = title;
-    document.querySelector("#prompt-reason").textContent = reason;
-  }),
-);
-
 const film = document.querySelector("#analysis-film");
 const filmButtons = [...document.querySelectorAll("[data-time]")];
 const filmTimes = filmButtons.map((button) => Number(button.dataset.time));
@@ -619,3 +584,6 @@ document.querySelector(".report-download").addEventListener("click", () => {
 
 import { initWorkshops } from "./workshops.js";
 initWorkshops(() => reduced);
+
+import { initProductionNotes } from "./production-notes.js";
+initProductionNotes();

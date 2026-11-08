@@ -1,0 +1,23 @@
+{
+  "provider": "Google Gemini web",
+  "mode": "Pro",
+  "date": "2026-11-08",
+  "method": "Ayrı yeni sohbetlerde aynı temsili metin gözlemi. Görüntü yüklenmedi. Tekrar veya istatistiksel ölçüm yapılmadı.",
+  "trials": [
+    {
+      "id": "initial",
+      "prompt": "Bir arayüzde gösterilmek üzere aşağıdaki metin verisi hakkında en fazla 70 kelimelik Türkçe bir ön değerlendirme yaz. Yeni bulgu veya ölçüm ekleme. Yanıtını yalnızca {\"text\":\"...\"} biçiminde JSON olarak ver. Temsili metin verisi: İşaretli diş yüzeyi alanı çevresindeki mineye göre daha açık görünüyor. Kaynak etiketi White Spot; kaynak skoru 0,91. Skor yeniden ölçülmedi. Bu denemede görüntü sağlanmadı ve gerçek hasta bilgisi yok.",
+      "output": "Babag, değerlendirme sonucuna göre işaretli diş yüzeyinde çevre mineye kıyasla daha açık renkli bir alan (White Spot) tespit edilmiştir. Kaynak skoru 0,91 olarak belirlenmiş olup yeniden ölçüm yapılmamıştır. Bu bulgular, görüntü veya gerçek hasta verisi içermeyen deneme bilgilerine dayanmaktadır."
+    },
+    {
+      "id": "refined",
+      "prompt": "Bir arayüzde gösterilmek üzere aşağıdaki metin verisi hakkında Türkçe bir ön değerlendirme yaz. Yeni bulgu veya ölçüm ekleme. Yalnızca işaretlenen bölgeye odaklan. Yanıt en fazla iki kısa cümle olsun; gündelik Türkçe kullan. İlk cümlede gözlemi anlat. İkinci cümlede, nedenin bu veriden belirlenemediğini ve diş hekimi değerlendirmesi gerektiğini belirt. Kaynak skorunu kullanıcıya doğruluk yüzdesi veya tanı kesinliği olarak sunma. Tanı veya tedavi önerme. Yanıtını yalnızca {\"text\":\"...\"} biçiminde JSON olarak ver. Temsili metin verisi: İşaretli diş yüzeyi alanı çevresindeki mineye göre daha açık görünüyor. Kaynak etiketi White Spot; kaynak skoru 0,91. Skor yeniden ölçülmedi. Bu denemede görüntü sağlanmadı ve gerçek hasta bilgisi yok.",
+      "output": "Babag, işaretli alandaki diş yüzeyi etrafındaki mineye göre daha açık renkte duruyor. Bunun nedeni sadece bu veriden bilinemeyeceği için durumu mutlaka bir diş hekiminin değerlendirmesi gerekir."
+    },
+    {
+      "id": "interface",
+      "prompt": "Bir arayüzde gösterilmek üzere aşağıdaki metin verisi hakkında Türkçe bir ön değerlendirme yaz. Yeni bulgu veya ölçüm ekleme. Yalnızca işaretlenen bölgeye odaklan. Yanıt tam iki kısa cümle olsun; gündelik Türkçe kullan. İlk cümlede gözlemi anlat. İkinci cümlede, nedenin bu veriden belirlenemediğini ve diş hekimi değerlendirmesi gerektiğini belirt. Kaynak skorunu kullanıcıya doğruluk yüzdesi veya tanı kesinliği olarak sunma. Tanı veya tedavi önerme. Metin bir arayüzde doğrudan gösterilecek: hiçbir hitap, kullanıcı adı, kişisel sesleniş, ön söz, selamlama veya sohbet geçmişine atıf ekleme. Yalnızca iki cümlelik ön değerlendirmeyi ver. Yanıtını yalnızca {\"text\":\"...\"} biçiminde JSON olarak ver. Temsili metin verisi: İşaretli diş yüzeyi alanı çevresindeki mineye göre daha açık görünüyor. Kaynak etiketi White Spot; kaynak skoru 0,91. Skor yeniden ölçülmedi. Bu denemede görüntü sağlanmadı ve gerçek hasta bilgisi yok.",
+      "output": "İşaretlenen bölgedeki diş yüzeyi, etrafına göre daha açık renkte görünüyor. Bunun nedeni sadece bu bilgiden anlaşılamayacağı için bir diş hekimine görünmen gerekiyor."
+    }
+  ]
+}

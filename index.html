@@ -3,6 +3,27 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link
+      rel="canonical"
+      href="https://emrekgcc.github.io/dentai-experience/"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="DentAI — Gemini Prompt Arena başvuru çalışması"
+    />
+    <meta
+      property="og:description"
+      content="Bir gözlemden yaratıcı filme, istemden açıklamaya. Emre Küçükgöçer’in üretim süreci ve gerçek Gemini kayıtları."
+    />
+    <meta
+      property="og:image"
+      content="https://emrekgcc.github.io/dentai-experience/assets/gemini-study-poster.jpg"
+    />
+    <meta
+      property="og:url"
+      content="https://emrekgcc.github.io/dentai-experience/"
+    />
     <meta name="theme-color" content="#111c20" />
     <title>DentAI — Bir görüntünün yolculuğu</title>
     <meta
@@ -57,9 +78,13 @@
           <strong>Gemini Prompt Arena için hazırlandı.</strong
           ><span>Emre Küçükgöçer’in bireysel başvuru çalışması</span>
         </p>
-        <a class="submission-jump" href="#prompt-lab"
-          >Gemini denemesini incele ↗</a
-        >
+        <a class="submission-jump" href="#prompt">Üretim defterini incele ↗</a>
+      </div>
+      <div class="review-route" aria-label="Çalışmayı inceleme bağlantıları">
+        <span>Çalışmayı keşfet</span
+        ><a href="#creative-study">Gemini kısa filmi ↗</a
+        ><a href="#prompt">İstemden sonuca ↗</a
+        ><a href="#evidence">Bulguyu incele ↗</a>
       </div>
       <section class="first-look section-shell" id="top">
         <div class="first-question">
@@ -138,10 +163,93 @@
           ><button id="challenge-reset" hidden>Yeniden bak ↺</button>
         </div>
       </section>
+      <section class="creative-study section-shell" id="creative-study">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Gemini ile üretilen kısa çalışma</span>
+            <h2>Bir ışığın<br /><em>peşinde.</em></h2>
+          </div>
+          <p>
+            Aynı yüzeyde iki değişim.<br />Biri ışıkla yer değiştiriyor, diğeri
+            yüzeyde kalıyor.
+          </p>
+        </div>
+        <div class="creative-player">
+          <video
+            id="creative-film"
+            controls
+            playsinline
+            preload="metadata"
+            poster="assets/gemini-study-poster.jpg"
+            width="1280"
+            height="720"
+            aria-label="Gemini ile üretilmiş kavramsal diş yüzeyi ve ışık filmi"
+          >
+            <source
+              src="assets/gemini-surface-study-original.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div
+          class="creative-takes"
+          role="group"
+          aria-label="Video üretim denemesi"
+        >
+          <button data-take="0" aria-pressed="true">İlk üretim</button
+          ><button data-take="1" aria-pressed="false">
+            İkinci istem denemesi
+          </button>
+        </div>
+        <div class="creative-meta">
+          <span id="creative-spec"
+            >Gemini video aracı · Özgün çıktı · 1280 × 720 · 24 FPS · 10
+            saniye</span
+          ><a
+            id="creative-download"
+            href="assets/gemini-surface-study-original.mp4"
+            download
+            >Özgün videoyu indir ↗</a
+          >
+        </div>
+        <div class="creative-notes">
+          <div>
+            <h3>Neyi denedim?</h3>
+            <p>
+              Hareket eden bir ışık yansımasını, yüzeyde kalan küçük bir renk
+              farkından ayıran tek planlık bir görsel anlatı kurdum. İstemde
+              kamera hareketini, malzemeyi ve işaretin yüzeye bağlı kalmasını
+              tarif ettim.
+            </p>
+          </div>
+          <div>
+            <h3>Sonucu nasıl okudum?</h3>
+            <p id="creative-review">
+              İlk çıktı sakin kamera hareketini ve ışık geçişini üretti. Kontur
+              ise yer yer çift çizgiye dönüştü ve beyaz alanın sınırını tam
+              izleyemedi. Sonraki istemde bu sorunu özellikle ele aldım.
+            </p>
+          </div>
+        </div>
+        <details class="creative-source">
+          <summary>Kaynak istemi ve üretim notlarını aç</summary>
+          <p>
+            Bu video Gemini’nin video oluşturma aracıyla üretildi. Kavramsal bir
+            görselleştirmedir. Klinik görüntü analizi veya gerçek segmentasyon
+            çıktısı içermez. Özgün video dosyası ve platformun kaynak işaretleri
+            korunur.
+          </p>
+          <a href="assets/gemini-video-record.json" download
+            >İstemi ve üretim kaydını indir ↗</a
+          >
+        </details>
+      </section>
       <section class="analysis-cinema" id="cinema">
         <div class="cinema-heading">
           <div>
-            <span class="eyebrow">DentAI / Görüntüden açıklamaya</span>
+            <span class="eyebrow"
+              >Projenin çalışma mantığı / Kodla hazırlanmış canlandırma</span
+            >
             <h2>Bir görüntünün<br /><em>içine bak.</em></h2>
           </div>
           <p>
@@ -382,7 +490,7 @@
               />
               <canvas
                 id="enamel"
-                aria-label="Temsili diş modeli. Kaydırdıkça görüntüye yaklaşılır ve küçük bir alanın maskesi çizilir."
+                aria-label="Temsili diş modeli. Adımlar seçildikçe görüntüye yaklaşılır ve küçük bir alanın maskesi çizilir."
               ></canvas>
               <div class="capture-guides" aria-hidden="true">
                 <i></i><i></i><i></i><i></i><span>Üst ön bölge</span>
@@ -680,54 +788,53 @@
           </div>
         </div>
       </section>
-      <section id="prompt" class="prompt-section section-shell">
-        <div class="prompt-heading">
-          <span class="eyebrow">Gemini ile çalışmak</span>
-          <h2>İyi bir açıklama,<br />iyi bir <em>sınırla</em> başlar.</h2>
-          <p>
-            Görüntüyü anlamlandıran modelin nasıl konuşacağını da tasarladım.
-            Aşağıdaki örnek, bu yaklaşımı görünür kılmak için yeniden yazıldı.
-          </p>
-        </div>
-        <div class="prompt-workbench">
-          <div class="prompt-editor">
-            <div class="window-bar">
-              <span>İSTEMİN YAPISI</span><span>Gemini 2.0 Flash</span>
-            </div>
-            <div class="prompt-tabs" role="group" aria-label="İstem bölümleri">
-              <button data-prompt="0" aria-pressed="true">Görev</button
-              ><button data-prompt="1" aria-pressed="false">Dayanak</button
-              ><button data-prompt="2" aria-pressed="false">Sınırlar</button
-              ><button data-prompt="3" aria-pressed="false">Dil</button>
-            </div>
-            <p class="prompt-code" id="prompt-code">
-              Bir ağız içi görüntüsünde işaretlenen alanı, kişinin
-              anlayabileceği kısa bir ön değerlendirmeyle açıkla.
-            </p>
-            <div class="prompt-bottom">
-              Görüntü + maske bilgisi + sınırlanmış yönerge
-            </div>
+      <section id="prompt" class="revision-study section-shell">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Gerçek üretim defteri</span>
+            <h2>Yanıtı gördüm.<br /><em>İstemi değiştirdim.</em></h2>
           </div>
-          <div class="prompt-result" aria-live="polite">
-            <span class="eyebrow">Bu karar neyi değiştiriyor?</span>
-            <h3 id="prompt-title">Önce görevi tanımlıyorum.</h3>
-            <p id="prompt-reason">
-              Modelden işaretlenen bölgeye odaklanmasını istiyorum. Böylece
-              açıklamanın hangi soruya yanıt vermesi gerektiği belirginleşiyor.
-            </p>
-            <div class="result-example">
-              <span>Örnek çıktı</span>
-              <p>
-                “İşaretlenen alan çevresindeki mineye göre daha açık görünüyor.
-                Bunun nedenini yalnızca bu fotoğraftan belirleyemem.”
-              </p>
-            </div>
-            <small
-              >Bu ekranda canlı API çağrısı yapılmaz. İstemler model hatalarını
-              tek başına ortadan kaldırmaz.</small
-            >
+          <p>Aynı temsili gözlem.<br />Üç ayrı yeni sohbet, üç gerçek yanıt.</p>
+        </div>
+        <p class="provenance">
+          Gemini web’in Pro modunda yapılan metin denemeleri. Görüntü
+          yüklenmedi. Her istem bir kez çalıştırıldı. Aşağıdaki yanıtlar
+          kayıttan, değiştirilmeden gösterilir.
+        </p>
+        <div
+          class="revision-tabs"
+          role="group"
+          aria-label="Yönerge geliştirme aşaması"
+        >
+          <button data-trial="0" aria-pressed="true">01 / İlk istem</button
+          ><button data-trial="1" aria-pressed="false">
+            02 / Sınırları ekledim</button
+          ><button data-trial="2" aria-pressed="false">
+            03 / Arayüze uyarladım
+          </button>
+        </div>
+        <div class="revision-layout">
+          <div>
+            <span class="eyebrow">Gemini’nin kaydedilmiş yanıtı</span>
+            <blockquote id="trial-output">Deneme kaydı yükleniyor…</blockquote>
+            <details>
+              <summary>Bu yanıtı üreten istem</summary>
+              <pre id="trial-prompt"></pre>
+            </details>
+          </div>
+          <div class="revision-observation">
+            <span class="eyebrow">Sonraki kararım</span>
+            <h3 id="trial-title">Yanıtı okumak.</h3>
+            <p id="trial-observation"></p>
+            <div class="trial-facts" id="trial-facts"></div>
           </div>
         </div>
+        <a
+          class="record-download"
+          href="assets/gemini-independent-records.json"
+          download
+          >Üç istemi ve ham yanıtları indir ↗</a
+        >
       </section>
 
       <section class="architecture section-shell" id="architecture">
