@@ -29,7 +29,7 @@
         ></a
       >
       <nav aria-label="Ana menü">
-        <a href="#journey">Deneyim</a><a href="#lab">Perde arkası</a
+        <a href="#analysis">Analizi izle</a><a href="#lab">Perde arkası</a
         ><a href="#creator">Geliştirici</a>
       </nav>
       <button
@@ -41,49 +41,77 @@
       </button>
     </header>
     <main>
-      <section class="opening" id="top">
-        <div class="opening-top">
-          <span>Emre Küçükgöçer / Bireysel proje</span
-          ><span>Gemini Prompt Arena · Çalışma sunumu</span>
-        </div>
-        <div class="opening-title">
-          <h1>DENT<span>AI</span></h1>
-          <div class="lens" aria-hidden="true">
-            <img
-              src="assets/model.webp"
-              width="1280"
-              height="720"
-              alt=""
-            /><span class="lens-ring"></span
-            ><span class="lens-mark">DA / 01</span>
-          </div>
-        </div>
-        <div class="opening-bottom">
+      <section class="analysis-cinema" id="top">
+        <div class="cinema-heading">
           <div>
-            <p class="eyebrow">Ağız sağlığına daha yakından bak.</p>
-            <h2>Küçük bir ayrıntı.<br />Üzerinde düşünmeye değer.</h2>
+            <span class="eyebrow">DentAI / Görüntüden açıklamaya</span>
+            <h1>Bir görüntünün<br /><em>içine bak.</em></h1>
           </div>
-          <div class="opening-intro">
-            <p>
-              Bir fotoğraftaki işaret, anlaşılır bir açıklamaya nasıl dönüşür?
-              DentAI’ı geliştirirken sorduğum soruları ve bulduğum çözümleri tek
-              bir örnekte bir araya getirdim.
-            </p>
-            <a class="button dark" href="#journey"
-              >Yolculuğu başlat <span>↘</span></a
+          <p>
+            Önce fotoğraf. Sonra sınırlar. En sonunda, o işaretlerin ne
+            anlattığı.<br />Bu görüntünün analizini adım adım izle.
+          </p>
+        </div>
+        <div class="film-shell" id="analysis">
+          <video
+            id="analysis-film"
+            controls
+            playsinline
+            preload="metadata"
+            poster="assets/segmentation-poster.jpg"
+            width="1920"
+            height="1080"
+            aria-label="DentAI örnek görüntü üzerinde segmentasyon ve açıklama animasyonu"
+          >
+            <source
+              src="assets/DentAI-segmentation-1080p60.mp4"
+              type="video/mp4"
+            />
+            <track
+              src="assets/analysis-tr.vtt"
+              kind="captions"
+              srclang="tr"
+              label="Türkçe açıklamalar"
+            />
+          </video>
+          <div class="film-meta">
+            <span>1920 × 1080 / 60 FPS</span
+            ><a href="assets/DentAI-segmentation-1080p60.mp4" download
+              >Videoyu indir ↗</a
             >
           </div>
         </div>
-        <div class="achievement">
-          <span class="star" aria-hidden="true">✳</span>
-          <p>
-            <b>Türk-Alman Üniversitesi Hackathon 2026</b
-            ><span>Jüri tam puanıyla birincilik · Tek başıma geliştirdim.</span>
-          </p>
-          <a href="#creator">Projenin hikâyesi ↗</a>
+        <div class="film-chapters" role="group" aria-label="Video bölümleri">
+          <button data-time="0" aria-pressed="true">
+            <small>01 / GİRDİ</small><b>Fotoğrafı incele</b
+            ><span>Aynı karedeki iki bölge</span>
+          </button>
+          <button data-time="3" aria-pressed="false">
+            <small>02 / SEGMENTASYON</small><b>Sınırların oluşumu</b
+            ><span>Her bölgeye ayrı maske</span>
+          </button>
+          <button data-time="9" aria-pressed="false">
+            <small>03 / BULGULAR</small><b>İşaretleri oku</b
+            ><span>Gözlem ve model etiketi</span>
+          </button>
+          <button data-time="17" aria-pressed="false">
+            <small>04 / AÇIKLAMA</small><b>Bağlamı tamamla</b
+            ><span>Ön rapora dönüşüm</span>
+          </button>
+        </div>
+        <p class="film-disclosure">
+          Gönderilen örnek görselin animasyonla yeniden anlatımı. Maskeler
+          temsilî olarak çizildi. Kaynaktaki 0,91 ve 0,96 skorları yeniden
+          ölçülmedi. Klinik tanı için hekim değerlendirmesi gerekir.
+        </p>
+        <div class="cinema-byline">
+          <span><b>Emre Küçükgöçer</b> · Bireysel proje</span
+          ><span
+            >Türk-Alman Üniversitesi Hackathon 2026 ·
+            <b>Jüri tam puanıyla 1.lik</b></span
+          ><a href="#journey">Uygulamanın tüm akışı ↓</a>
         </div>
       </section>
-
       <section class="journey" id="journey" aria-label="DentAI çalışma akışı">
         <div class="journey-stage">
           <div class="stage-top">

@@ -1888,3 +1888,163 @@ footer > a {
   border-radius: 3px;
   color: #c9dacd;
 }
+.analysis-cinema {
+  background: #0b171c;
+  color: #f0f0e7;
+  padding: 55px 4vw 0;
+}
+.cinema-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1500px;
+  margin: 0 auto 35px;
+}
+.cinema-heading h1 {
+  font:
+    600 clamp(60px, 7.5vw, 120px) / 0.94 "Barlow Condensed",
+    sans-serif;
+  letter-spacing: -0.02em;
+}
+.cinema-heading h1 em {
+  font: inherit;
+  color: #e8df76;
+}
+.cinema-heading .eyebrow {
+  color: #aabdb1;
+  margin-bottom: 18px;
+}
+.cinema-heading > p {
+  font-size: 14px;
+  max-width: 400px;
+  color: #bac7bf;
+  padding-bottom: 5px;
+}
+.film-shell {
+  max-width: 1500px;
+  margin: auto;
+  scroll-margin-top: 15px;
+}
+.film-shell video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #667e704d;
+  border-radius: 4px;
+  background: #0b171c;
+  aspect-ratio: 16/9;
+}
+.film-meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 0;
+  color: #a9bbaf;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+.film-chapters {
+  max-width: 1500px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 18px auto 0;
+  border-top: 1px solid #607c6855;
+}
+.film-chapters button {
+  background: transparent;
+  border: 0;
+  border-top: 2px solid transparent;
+  color: #a8b9ab;
+  text-align: left;
+  padding: 21px 15px 21px 0;
+}
+.film-chapters [aria-pressed="true"] {
+  border-color: #e8df76;
+  color: #f0f0e7;
+}
+.film-chapters small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  color: #b5bd88;
+}
+.film-chapters b {
+  font-weight: 500;
+  display: block;
+  font-size: 19px;
+  margin-top: 11px;
+  letter-spacing: -0.5px;
+}
+.film-chapters span {
+  display: block;
+  font-size: 11px;
+  margin-top: 8px;
+  color: #a4b5a7;
+}
+.film-disclosure {
+  max-width: 1500px;
+  margin: 14px auto 30px;
+  font-size: 10px;
+  color: #a2b6a8;
+  line-height: 1.7;
+}
+.cinema-byline {
+  border-top: 1px solid #607c6855;
+  display: flex;
+  gap: 25px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1500px;
+  margin: auto;
+  padding: 22px 0;
+  font-size: 11px;
+  color: #baccbd;
+}
+@media (max-width: 700px) {
+  .analysis-cinema {
+    padding: 30px 5% 0;
+  }
+  .cinema-heading {
+    display: block;
+    margin-bottom: 25px;
+  }
+  .cinema-heading h1 {
+    font-size: 65px;
+  }
+  .cinema-heading > p {
+    font-size: 12px;
+    margin-top: 24px;
+  }
+  .cinema-heading .eyebrow {
+    font-size: 9px;
+  }
+  .film-chapters {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 12px;
+  }
+  .film-chapters button {
+    padding: 15px 3px 18px 0;
+  }
+  .film-chapters b {
+    font-size: 16px;
+    margin-top: 8px;
+  }
+  .film-chapters small {
+    font-size: 8px;
+  }
+  .film-chapters span {
+    font-size: 10px;
+  }
+  .film-meta {
+    font-size: 8px;
+  }
+  .cinema-byline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 10px;
+  }
+  .film-disclosure {
+    font-size: 9px;
+  }
+}

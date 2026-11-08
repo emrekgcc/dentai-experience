@@ -265,15 +265,6 @@ function readScroll() {
   sectionVisible =
     scrollY + innerHeight > storyTop &&
     scrollY < storyTop + journey.offsetHeight;
-  if (scrollY < innerHeight && !reduced) {
-    const amount = Math.min(1, scrollY / innerHeight);
-    document.querySelector(".lens").style.transform =
-      "translateY(" +
-      amount * 45 +
-      "px) rotate(" +
-      (-12 + amount * 16) +
-      "deg)";
-  }
   schedule();
 }
 function measure() {
@@ -398,3 +389,41 @@ promptButtons.forEach((button, index) =>
     document.querySelector("#prompt-reason").textContent = reason;
   }),
 );
+
+const film = document.querySelector("#analysis-film");
+const filmButtons = [...document.querySelectorAll("[data-time]")];
+const filmTimes = filmButtons.map((button) => Number(button.dataset.time));
+filmButtons.forEach((button) =>
+  button.addEventListener("click", async () => {
+    if (!film.readyState) {
+      await new Promise((resolve) =>
+        film.addEventListener("loadedmetadata", resolve, { once: true }),
+      );
+    }
+    film.currentTime = Number(button.dataset.time);
+    try {
+      await film.play();
+    } catch {
+      /* Native controls remain available. */
+    }
+  }),
+);
+film.addEventListener("timeupdate", () => {
+  const index = filmTimes.findLastIndex((time) => time <= film.currentTime);
+  filmButtons.forEach((button, i) =>
+    button.setAttribute("aria-pressed", String(i === index)),
+  );
+});
+const filmVisibility = new IntersectionObserver(
+  (entries) => {
+    if (!entries[0].isIntersecting) film.pause();
+  },
+  { threshold: 0.05 },
+);
+filmVisibility.observe(film);
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) film.pause();
+});
+motionButton.addEventListener("click", () => {
+  if (reduced) film.pause();
+});

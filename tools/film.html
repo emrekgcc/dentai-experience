@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8" />
+<link rel="stylesheet" href="../src/fonts.css" />
+<style>
+  body {
+    margin: 0;
+    background: #0b171c;
+  }
+  canvas {
+    display: block;
+    width: 1920px;
+    height: 1080px;
+  }
+</style>
+<canvas width="1920" height="1080"></canvas>
+<script type="module">
+  import { drawFilm } from "./film-scene.js";
+  const image = new Image();
+  image.src = "../assets/segmentation-reference.png";
+  window.ready = Promise.all([image.decode(), document.fonts.ready]);
+  window.frame = (t) =>
+    drawFilm(document.querySelector("canvas").getContext("2d"), t, image);
+</script>

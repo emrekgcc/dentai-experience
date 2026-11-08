@@ -6,13 +6,13 @@ Sayfa, çekimden ön rapora kadar altı adımı kaydırma ile anlatır. Diş yü
 
 ## Yerel çalışma
 
-Python 3 ile depo klasöründe:
+Node.js ile depo klasöründe:
 
 ```sh
-python -m http.server 8804 --bind 127.0.0.1
+node tools/serve.cjs
 ```
 
-Tarayıcıda http://127.0.0.1:8804 açılır. Kurulum veya derleme gerekmez.
+Tarayıcıda http://127.0.0.1:8805 açılır. Kurulum veya derleme gerekmez.
 
 ## İçerik ve dosyalar
 
@@ -35,3 +35,17 @@ Proje sahibi Emre Küçükgöçer. Bu web deneyiminin kod ve görsel anlatımın
 8 Kasım 2026 tarihinde yerel Chrome testlerinde 1440×960, 768×1024, 390×844, 360×740, 320×568 ve 844×390 ekran boyutları kontrol edildi. Altı akış adımı, maske ve kontrast düğmeleri, rapor penceresi, karşılaştırma sürgüsü, istem sekmeleri, açılır proje notları ve PDF bağlantısı test edildi. Azaltılmış hareket ve WebGL bulunmayan tarayıcı için alternatif görünüm kontrol edildi.
 
 1440×960 ekranda, Chrome headless ve SwiftShader yazılımsal çizimiyle yapılan 10 saniyelik kaydırma ölçümünde ortalama 41 FPS görüldü. 407 ardışık kare örneğinde yüzde 95 kare süresi 27,8 ms idi. Çizim tamponu 769×700 pikseldi. Bu ölçüm fiziksel telefon testi veya tüm cihazlarda FPS garantisi değildir. Gerçek hız cihaz, tarayıcı, ekran yenileme hızı ve arka plan yüküne bağlıdır.
+
+## Görüntü üzerinde analiz filmi
+
+Gönderilen segmentasyon görseli, 24 saniyelik ve 1920×1080 çözünürlükte 60 FPS filme dönüştürüldü. Dosya 1440 kare içerir. Kaynak görselin ayrıntı seviyesi kendi çözünürlüğüyle sınırlıdır. Maskeler kaynak görsele göre temsilî olarak yeniden çizildi. Kaynaktaki skorlar yeniden ölçülmedi.
+
+Film, görüntü hazırlama, segmentasyon, bulgular ve açıklama bölümlerinden oluşur. Sayfadaki bölüm düğmeleri video zamanına bağlıdır. Türkçe açıklama altyazısı, native oynatma ve indirme desteklenir. Ekran dışına veya arka plana geçildiğinde video durur.
+
+- assets/DentAI-segmentation-1080p60.mp4 — doğrulanmış 1920×1080 / 60 FPS film
+- assets/segmentation-reference.png — gönderilen kaynak görsel
+- tools/film-scene.js — çizim ve maske koordinatları
+- tools/film.html — kare üretimi için sahne
+- tools/serve.cjs — video aralık isteklerini destekleyen yerel sunucu
+
+Masaüstü 1440 ve mobil 390 piksel genişlikte video yüklemesi, bölüm atlamaları, seçili bölüm durumları, yatay taşma ve 3B akışa geçiş doğrulandı. H.264 dosya bilgisi ffprobe ile kontrol edildi. GitHub Pages bu aşamada etkinleştirilmedi.
